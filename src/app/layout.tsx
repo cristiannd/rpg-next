@@ -1,10 +1,17 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { MedievalSharp } from "next/font/google";
 
 export const metadata: Metadata = {
   title: "RPG Next",
   description: "",
 };
+
+const medievalSharp = MedievalSharp({
+  weight: "400",
+  style: "normal",
+  subsets: ["latin"]
+});
 
 export default function RootLayout({
   children,
@@ -13,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
-      <body>{children}</body>
+      <body className={medievalSharp.className}>{children}</body>
     </html>
   );
 }
