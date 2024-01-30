@@ -14,6 +14,13 @@ export default function Page() {
 
   const raceSelectionHandler = (race: IRace) => {
     setSelectedRace(race);
+
+    // If there is only one genre, it is automatically selected
+    if (race.genres.length === 1) genreSelectionHandler(race.genres[0]);
+  };
+
+  const genreSelectionHandler = (genre: IGenre) => {
+    setSelectedGenre(genre);
   };
 
   const formActionHandler = () => {
@@ -66,7 +73,11 @@ export default function Page() {
           </div>
 
           {/* Character's genre */}
-          <Genre selectedRace={selectedRace} />
+          <Genre
+            selectedRace={selectedRace}
+            selectedGenre={selectedGenre}
+            genreSelectionHandler={genreSelectionHandler}
+          />
         </div>
 
         <button type="submit" className="rounded bg-black px-4 py-1 text-xl">
