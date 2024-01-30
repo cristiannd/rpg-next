@@ -1,0 +1,22 @@
+.background {
+  width: 120px;
+  height: 120px;
+  cursor: pointer;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #69ecb5;
+  transition: all .1s;
+  color: #002e22;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.background:hover, .isSelected {
+  font-weight: 500;
+  background-color: #09c07f;
+  color: #ebfef5;
+  border: 1px solid #ebfef5;
+}

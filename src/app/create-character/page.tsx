@@ -1,29 +1,22 @@
 "use client";
 
 import { createCharacter } from "./actions";
+import RaceOption from "./components/race/race";
+import Races from "./components/races/races";
 
 export default function Page() {
-  const races = [
-    {
-      id: '1',
-      name: "Human",
-      description: "Human description"
-    },
-    {
-      id: '2',
-      name: "Orc",
-      description: "Orc description"
-    },
-  ]
+
 
   return (
-    <div className="flex flex-col justify-center items-center min-h-screen">
+    <div className="flex min-h-screen flex-col items-center justify-center">
       <form
         action={createCharacter}
-        className="bg-yellow-800 p-4 rounded-xl text-gray-200"
+        className="flex flex-col gap-3 rounded-xl bg-yellow-900 p-4 text-gray-200"
       >
         <h2 className="text-4xl">Create your character</h2>
+
         <div className="flex flex-col gap-3">
+          {/* Character's name */}
           <div className="flex">
             <label htmlFor="characterName" className="pe-2">
               Name:
@@ -33,14 +26,22 @@ export default function Page() {
               name="characterName"
               placeholder="Write your character's name"
               id="characterName"
-              className="w-full"
+              className="w-full rounded ps-1 text-black outline-none"
+              required
             />
           </div>
 
+          {/* Character's race */}
+          <div>
+            <p>Select a race</p>
+            <Races />
+          </div>
+
+          {/* Character's genre */}
           <fieldset>
-            <legend>Select your genre</legend>
+            <legend>Select a genre</legend>
             <div>
-              <input type="radio" id="man" name="genre" value="man" />
+              <input type="radio" id="man" name="genre" value="man" required />
               <label htmlFor="man" className="px-2">
                 Man
               </label>
@@ -52,16 +53,9 @@ export default function Page() {
               </label>
             </div>
           </fieldset>
-
-          <select name="race" className="text-black">
-            <option disabled className="text-gray-400">Select a race</option>
-            {
-              races.map(race => <option key={race.id}>{race.name}</option>)
-            }
-          </select>
         </div>
 
-        <button type="submit" className="bg-black py-1 px-4 rounded text-xl">
+        <button type="submit" className="rounded bg-black px-4 py-1 text-xl">
           Create
         </button>
       </form>
