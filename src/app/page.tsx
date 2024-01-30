@@ -5,7 +5,7 @@ export default function Home() {
     <main>
       <h1>RPG Next</h1>
 
-      <Link href="/create" className="bg-blue-500 m-2 px-2 py-1 rounded text-white">
+      <Link href="/create-character" className="bg-blue-500 m-2 px-2 py-1 rounded text-white">
         Crear personaje
       </Link>
     </main>
