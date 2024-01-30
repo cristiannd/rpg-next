@@ -1,0 +1,74 @@
+[
+  {
+    "id": "1",
+    "name": "Human",
+    "description": "Human description",
+    "image": "https://picsum.photos/75",
+    "genres": [
+      {
+        "id": "1",
+        "name": "Male",
+        "description": "Male description"
+      },
+      {
+        "id": "2",
+        "name": "Female",
+        "description": "Female description"
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "name": "Orc",
+    "description": "Orc description",
+    "image": "https://picsum.photos/75",
+    "genres": [
+      {
+        "id": "1",
+        "name": "Male",
+        "description": "Male description"
+      },
+      {
+        "id": "2",
+        "name": "Female",
+        "description": "Female description"
+      }
+    ]
+  },
+  {
+    "id": "3",
+    "name": "Elf",
+    "description": "Elf description",
+    "image": "https://picsum.photos/75",
+    "genres": [
+      {
+        "id": "1",
+        "name": "Male",
+        "description": "Male description"
+      },
+      {
+        "id": "2",
+        "name": "Female",
+        "description": "Female description"
+      }
+    ]
+  },
+  {
+    "id": "4",
+    "name": "Dwarf",
+    "description": "Dwarf description",
+    "image": "https://picsum.photos/75",
+    "genres": [
+      {
+        "id": "1",
+        "name": "Male",
+        "description": "Male description"
+      },
+      {
+        "id": "2",
+        "name": "Female",
+        "description": "Female description"
+      }
+    ]
+  }
+]

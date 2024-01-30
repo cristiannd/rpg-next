@@ -1,12 +1,22 @@
-"use client";
-
 import { createCharacter } from "./actions";
-import RaceOption from "./components/race/race";
 import Races from "./components/races/races";
+import databaseRaces from "../../../data/races.json";
 
-export default function Page() {
+export interface Race {
+  id: string;
+  name: string;
+  description: string;
+  image: string;
+  genres: Array<Genre>;
+}
 
+interface Genre {
+  id: string;
+  name: string;
+  description: string;
+}
 
+export default async function Page() {
   return (
     <div className="flex min-h-screen flex-col items-center justify-center">
       <form
@@ -34,7 +44,7 @@ export default function Page() {
           {/* Character's race */}
           <div>
             <p>Select a race</p>
-            <Races />
+            <Races races={databaseRaces} />
           </div>
 
           {/* Character's genre */}
