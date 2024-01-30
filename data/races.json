@@ -42,11 +42,6 @@
     "image": "https://picsum.photos/75",
     "genres": [
       {
-        "id": "1",
-        "name": "Male",
-        "description": "Male description"
-      },
-      {
         "id": "2",
         "name": "Female",
         "description": "Female description"
@@ -63,11 +58,6 @@
         "id": "1",
         "name": "Male",
         "description": "Male description"
-      },
-      {
-        "id": "2",
-        "name": "Female",
-        "description": "Female description"
       }
     ]
   }

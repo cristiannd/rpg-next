@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import type { Race } from "../races/races";
+import type { IRace } from "@/types";
 import styles from "./race.module.css";
 
 export default function Race({
@@ -9,8 +9,8 @@ export default function Race({
   raceSelectionHandler,
   isSelected,
 }: {
-  race: Race;
-  raceSelectionHandler: (race: Race) => void;
+  race: IRace;
+  raceSelectionHandler: (race: IRace) => void;
   isSelected: boolean;
 }) {
   const { name, image } = race;

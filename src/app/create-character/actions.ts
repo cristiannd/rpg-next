@@ -1,11 +1,15 @@
 "use server";
 
-export async function createCharacter(formData: FormData) {
-  const rawFormData = {
-    characterName: formData.get("characterName"),
-    genre: formData.get("genre"),
-    race: formData.get("race"),
-  };
+import type { ICharacter } from "@/types";
 
-  console.log(rawFormData);
+export async function createCharacter(character: ICharacter) {
+  const { characterName, race, genre } = character;
+
+  console.log(character)
+
+  if (!characterName) return;
+  if (!race) return;
+  if (!genre) return;
+
+  console.log(character);
 }

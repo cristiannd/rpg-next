@@ -1,17 +1,18 @@
 "use client";
 
-import { useState } from "react";
 import Race from "../race/race";
-import styles from './races.module.css'
-import type { Race as IRace } from "../../page";
+import styles from "./races.module.css";
+import type { IRace } from "@/types";
 
-export default function Races({ races }: { races: Array<IRace>}) {
-  const [selectedRace, setSelectedRace] = useState<IRace | null>(null);
-
-  const raceSelectionHandler = (race: IRace) => {
-    setSelectedRace(race);
-  };
-
+export default function Races({
+  races,
+  selectedRace,
+  raceSelectionHandler,
+}: {
+  races: Array<IRace>;
+  selectedRace: IRace | null;
+  raceSelectionHandler: (race: IRace) => void
+}) {
   return (
     <ul className={styles.races}>
       {races.map((race) => (

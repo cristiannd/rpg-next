@@ -1,26 +1,39 @@
+"use client";
+
 import { createCharacter } from "./actions";
 import Races from "./components/races/races";
 import databaseRaces from "../../../data/races.json";
+import type { IRace, ICharacter, IGenre } from "@/types";
+import { useState } from "react";
+import Genre from "./components/genre/genre";
 
-export interface Race {
-  id: string;
-  name: string;
-  description: string;
-  image: string;
-  genres: Array<Genre>;
-}
+export default function Page() {
+  const [characterName, setCharacterName] = useState("");
+  const [selectedRace, setSelectedRace] = useState<IRace | null>(null);
+  const [selectedGenre, setSelectedGenre] = useState<IGenre | null>(null);
 
-interface Genre {
-  id: string;
-  name: string;
-  description: string;
-}
+  const raceSelectionHandler = (race: IRace) => {
+    setSelectedRace(race);
+  };
 
-export default async function Page() {
+  const formActionHandler = () => {
+    console.log({ characterName, selectedRace, selectedGenre });
+    if (!selectedRace) return;
+    if (!selectedGenre) return;
+
+    const character: ICharacter = {
+      characterName,
+      race: selectedRace,
+      genre: selectedGenre,
+    };
+
+    createCharacter(character);
+  };
+
   return (
     <div className="flex min-h-screen flex-col items-center justify-center">
       <form
-        action={createCharacter}
+        action={formActionHandler}
         className="flex flex-col gap-3 rounded-xl bg-yellow-900 p-4 text-gray-200"
       >
         <h2 className="text-4xl">Create your character</h2>
@@ -35,6 +48,7 @@ export default async function Page() {
               type="text"
               name="characterName"
               placeholder="Write your character's name"
+              onChange={(e) => setCharacterName(e.target.value)}
               id="characterName"
               className="w-full rounded ps-1 text-black outline-none"
               required
@@ -44,25 +58,15 @@ export default async function Page() {
           {/* Character's race */}
           <div>
             <p>Select a race</p>
-            <Races races={databaseRaces} />
+            <Races
+              races={databaseRaces}
+              selectedRace={selectedRace}
+              raceSelectionHandler={raceSelectionHandler}
+            />
           </div>
 
           {/* Character's genre */}
-          <fieldset>
-            <legend>Select a genre</legend>
-            <div>
-              <input type="radio" id="man" name="genre" value="man" required />
-              <label htmlFor="man" className="px-2">
-                Man
-              </label>
-            </div>
-            <div>
-              <input type="radio" id="woman" name="genre" value="woman" />
-              <label htmlFor="woman" className="px-2">
-                Woman
-              </label>
-            </div>
-          </fieldset>
+          <Genre selectedRace={selectedRace} />
         </div>
 
         <button type="submit" className="rounded bg-black px-4 py-1 text-xl">
