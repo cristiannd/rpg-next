@@ -2,20 +2,10 @@
 
 export async function createCharacter(formData: FormData) {
   const rawFormData = {
-    nameCharacter: formData.get("nameCharacter"),
+    characterName: formData.get("characterName"),
+    genre: formData.get("genre"),
+    race: formData.get("race"),
   };
 
-  fetch("./src/app/create/actions.ts")
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error(
-          `Error al cargar el archivo JSON: ${response.statusText}`
-        );
-      }
-
-      return response.json();
-    })
-    .then((data) => console.log(data));
-
-  console.log({ rawFormData });
+  console.log(rawFormData);
 }

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { MedievalSharp } from "next/font/google";
+import { MedievalSharp, Dosis } from "next/font/google";
 
 export const metadata: Metadata = {
   title: "RPG Next",
@@ -13,6 +13,12 @@ const medievalSharp = MedievalSharp({
   subsets: ["latin"]
 });
 
+const lato = Dosis({
+  subsets: ["latin"],
+  style: "normal",
+  weight: ["400"]
+})
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -20,7 +26,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
-      <body className={medievalSharp.className}>{children}</body>
+      <body className={lato.className}>{children}</body>
     </html>
   );
 }
