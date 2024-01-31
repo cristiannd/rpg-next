@@ -6,11 +6,17 @@ import databaseRaces from "../../../data/races.json";
 import type { IRace, ICharacter, IGenre } from "@/types";
 import { useState } from "react";
 import Genre from "./components/genre/genre";
+import styles from "./page.module.css";
+import CharacterName from "./components/character-name/character-name";
 
 export default function Page() {
   const [characterName, setCharacterName] = useState("");
   const [selectedRace, setSelectedRace] = useState<IRace | null>(null);
   const [selectedGenre, setSelectedGenre] = useState<IGenre | null>(null);
+
+  const characterNameHandler = (name: string) => {
+    setCharacterName(name);
+  };
 
   const raceSelectionHandler = (race: IRace) => {
     setSelectedRace(race);
@@ -38,29 +44,13 @@ export default function Page() {
   };
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center">
-      <form
-        action={formActionHandler}
-        className="flex flex-col gap-3 rounded-xl bg-yellow-900 p-4 text-gray-200"
-      >
-        <h2 className="text-4xl">Create your character</h2>
+    <div className={styles.container}>
+      <form action={formActionHandler} className={styles.form}>
+        <h2 className={styles.title}>Create your character</h2>
 
-        <div className="flex flex-col gap-3">
+        <div className="">
           {/* Character's name */}
-          <div className="flex">
-            <label htmlFor="characterName" className="pe-2">
-              Name:
-            </label>
-            <input
-              type="text"
-              name="characterName"
-              placeholder="Write your character's name"
-              onChange={(e) => setCharacterName(e.target.value)}
-              id="characterName"
-              className="w-full rounded ps-1 text-black outline-none"
-              required
-            />
-          </div>
+          <CharacterName characterNameHandler={characterNameHandler} />
 
           {/* Character's race */}
           <div>
@@ -80,7 +70,7 @@ export default function Page() {
           />
         </div>
 
-        <button type="submit" className="rounded bg-black px-4 py-1 text-xl">
+        <button type="submit" className="">
           Create
         </button>
       </form>
